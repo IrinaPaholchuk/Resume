@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ирина Пахольчук · Ресторанный менеджер</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Marcellus&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #12100E;
+            background-image: radial-gradient(circle at 10% 20%, #1F1B17 0%, #0C0B0A 100%);
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+            color: #ECE8E0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .resume-card {
+            max-width: 1040px;
+            width: 100%;
+            background: #1A1714;
+            border-radius: 32px;
+            padding: 48px 52px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            border: 1px solid #3A322A;
+            position: relative;
+            transition: all 0.2s;
+            overflow: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #2A2420; border-radius: 12px; }
+        ::-webkit-scrollbar-thumb { background: #B4975A; border-radius: 12px; }
+
+        .serif {
+            font-family: 'Marcellus', serif;
+            letter-spacing: 0.02em;
+        }
+
+        .gold {
+            color: #C9A96E;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #2E2822;
+            padding-bottom: 28px;
+            gap: 16px;
+        }
+
+        .name-title h1 {
+            font-size: 56px;
+            font-weight: 500;
+            font-family: 'Marcellus', serif;
+            letter-spacing: 0.5px;
+            color: #F4EFE7;
+            line-height: 1.05;
+            margin-bottom: 10px;
+        }
+
+        .role-tag {
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #C9A96E;
+            font-weight: 400;
+            border-left: 4px solid #C9A96E;
+            padding-left: 18px;
+        }
+
+        .contacts-hero {
+            text-align: right;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #B5A790;
+            word-break: break-word;
+        }
+        .contacts-hero a {
+            color: #C9A96E;
+            text-decoration: none;
+            border-bottom: 1px dotted #4A4036;
+        }
+        .contacts-hero a:hover { border-bottom-color: #C9A96E; }
+
+        /* ===== СЕТКА ===== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+            gap: 48px;
+        }
+
+        /* ===== ЛЕВАЯ КОЛОНКА ===== */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            min-width: 0;
+        }
+
+        .photo-block {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #3A322A;
+            background: #2A2420;
+            margin-bottom: 4px;
+            flex-shrink: 0;
+        }
+        .photo-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #D3CABC;
+        }
+        .about-text p { margin-bottom: 12px; }
+
+        .superpowers {
+            margin-top: 8px;
+        }
+        .superpower-item {
+            background: #24201C;
+            border-left: 3px solid #C9A96E;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            border-radius: 0 12px 12px 0;
+        }
+        .superpower-item h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #C9A96E;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .superpower-item p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #D3CABC;
+            font-style: italic;
+            word-wrap: break-word;
+        }
+
+        .contact-info .contact-line {
+            display: flex;
+            gap: 12px;
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid #2E2822;
+            flex-wrap: wrap;
+        }
+        .contact-info .label {
+            color: #8A7C6B;
+            min-width: 80px;
+            font-weight: 500;
+        }
+
+        /* ===== ПРАВАЯ КОЛОНКА ===== */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            min-width: 0;
+        }
+
+        /* ОПЫТ (кратко) */
+        .exp-short {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .exp-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 10px 0;
+            border-bottom: 1px solid #2E2822;
+            font-size: 14px;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+        }
+        .exp-row .role { font-weight: 600; color: #F4EFE7; }
+        .exp-row .company { color: #C9A96E; font-style: italic; }
+        .exp-row .year { color: #8A7C6B; font-size: 13px; white-space: nowrap; }
+
+        /* ЦИТАТА (теперь между опытом и кейсами) */
+        .quote-block {
+            background: #2E2822;
+            border-radius: 16px;
+            padding: 24px 28px;
+            border-left: 6px solid #C9A96E;
+            font-style: italic;
+            font-size: 16px;
+            color: #E8DFD4;
+            line-height: 1.5;
+        }
+        .quote-block .author {
+            display: block;
+            margin-top: 12px;
+            font-style: normal;
+            font-weight: 500;
+            color: #C9A96E;
+            font-size: 14px;
+        }
+
+        /* КАРУСЕЛЬ КЕЙСОВ */
+        .carousel-wrapper {
+            background: #24201C;
+            border-radius: 20px;
+            padding: 24px 28px;
+            border: 1px solid #3A322A;
+            overflow: hidden;
+        }
+
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .carousel-header h3 {
+            font-family: 'Marcellus', serif;
+            font-size: 22px;
+            color: #F4EFE7;
+            letter-spacing: 0.5px;
+        }
+        .carousel-header span {
+            color: #8A7C6B;
+            font-size: 13px;
+        }
+
+        .carousel-track-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 0;
+            width: 100%;
+        }
+        .carousel-slide {
+            flex: 0 0 100%;
+            min-width: 0;
+            padding: 4px 0;
+            box-sizing: border-box;
+        }
+        .carousel-slide h4 {
+            font-size: 18px;
+            color: #C9A96E;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-family: 'Marcellus', serif;
+        }
+        .carousel-slide p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #D3CABC;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .carousel-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .carousel-btn {
+            background: #2E2822;
+            border: 1px solid #4A4036;
+            color: #C9A96E;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .carousel-btn:hover {
+            background: #3A322A;
+            border-color: #C9A96E;
+            transform: scale(1.05);
+        }
+        .carousel-btn:active { transform: scale(0.95); }
+
+        /* Адаптив */
+        @media (max-width: 780px) {
+            .resume-card { padding: 28px 20px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 24px; }
+            .hero { flex-direction: column; align-items: flex-start; }
+            .contacts-hero { text-align: left; }
+            .name-title h1 { font-size: 38px; }
+            .photo-block { width: 110px; height: 110px; }
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .resume-card { box-shadow: none; border: 1px solid #ccc; background: white; }
+            .gold { color: #A67B3D; }
+            .carousel-btn { display: none; }
+            .carousel-track { transform: translateX(0) !important; flex-wrap: wrap; }
+            .carousel-slide { flex: 0 0 100%; display: block !important; }
+            .superpower-item, .quote-block, .carousel-wrapper { background: #f5f5f5; border-color: #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-card">
+
+    <!-- ========== HERO ========== -->
+    <div class="hero">
+        <div class="name-title">
+            <h1>Ирина Пахольчук</h1>
+            <div class="role-tag">Управляющий рестораном · Менеджер</div>
+        </div>
+        <div class="contacts-hero">
+            <p>+7 (921) 810-22-86 · <a href="mailto:ira.paholchuk@yandex.ru">ira.paholchuk@yandex.ru</a></p>
+            <p>Архангельск · готовность к переезду (Москва, Ярославль)</p>
+        </div>
+    </div>
+
+    <!-- ========== ОСНОВНАЯ СЕТКА ========== -->
+    <div class="grid-2">
+
+        <!-- ===== ЛЕВАЯ КОЛОНКА ===== -->
+        <div class="left-panel">
+
+            <!-- ФОТО -->
+            <div class="photo-block">
+                <img src="https://sun9-6.userapi.com/s/v1/ig2/EtsqLwruaJ7emMPD0ogOOGDb83eC1QADhH1llHQr-IKveqTO1VMp7ZNfBneRgUGdBbkrvjgg-bl_k_2l7XFqxHhq.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,300x300&from=bu&u=LtgqMhrJsZXD7xOoXfchYE9rUG8lRkjIr18oTN_qjBQ&cs=300x0" alt="Ирина Пахольчук">
+            </div>
+
+            <!-- О СЕБЕ -->
+            <div class="about-text">
+                <p><span class="gold">10+ лет</span> в ресторанном бизнесе. Прошла путь от официантки до менеджера зала и HR.</p>
+                <p>Создаю команды, где люди работают с душой. Гости чувствуют себя главными.</p>
+            </div>
+
+            <!-- СУПЕРСИЛЫ -->
+            <div class="superpowers">
+
+                <div class="superpower-item">
+                    <h4>📊 Аналитика и отчётность</h4>
+                    <p>«Осваивала работу с iiko office и отчётами самостоятельно ещё на линейных должностях. Сейчас хорошо представляю, как и за какими цифрами следить, и наконец-то хочу, чтобы их с меня регулярно спрашивали».</p>
+                </div>
+
+                <div class="superpower-item">
+                    <h4>🔥 Неравнодушная и с характером</h4>
+                    <p>«Когда разберусь, могу поспорить, если вижу, как лучше. Ищу место, где это ценят».</p>
+                </div>
+
+                <div class="superpower-item">
+                    <h4>❤️ Их любовь и уважение</h4>
+                    <p>«Сначала доказываю, что компетентна, затем экологичными замечаниями убеждаю, что надо делать, а своей верой — что они хотят делать».</p>
+                </div>
+
+                <div class="superpower-item">
+                    <h4>⚡ Разрулю любой конфликт</h4>
+                    <p>«Долго и вежливо говорю со сложными, взбешёнными, плачущими гостями так, что потом они извиняются за свой тон. Бумажные дяди и бунтующие заводчане — все окутаны любовью».</p>
+                </div>
+
+            </div>
+
+            <!-- КОНТАКТЫ -->
+            <div class="contact-info">
+                <div class="contact-line"><span class="label">Телефон</span> +7 (921) 810-22-86</div>
+                <div class="contact-line"><span class="label">Email</span> ira.paholchuk@yandex.ru</div>
+                <div class="contact-line"><span class="label">Готовность</span> к переезду, командировки</div>
+                <div class="contact-line"><span class="label">Языки</span> Русский · Английский B2</div>
+            </div>
+
+        </div>
+
+        <!-- ===== ПРАВАЯ КОЛОНКА ===== -->
+        <div class="right-panel">
+
+            <!-- ===== КЛЮЧЕВОЙ ОПЫТ ===== -->
+            <div>
+                <h3 style="font-family: 'Marcellus', serif; font-size: 20px; margin-bottom: 12px; color: #C9A96E;">Ключевой опыт</h3>
+                <div class="exp-short">
+                    <div class="exp-row"><span class="role">Менеджер зала ресторана</span><span class="company">УК Ресто консалт</span><span class="year">2025 — наст.</span></div>
+                    <div class="exp-row"><span class="role">Менеджер по персоналу</span><span class="company">УК Ресто консалт</span><span class="year">2025</span></div>
+                    <div class="exp-row"><span class="role">Управляющий / Бармен</span><span class="company">Бар «Рекольтант»</span><span class="year">2024 — наст.</span></div>
+                    <div class="exp-row"><span class="role">Управляющий залом (открытие)</span><span class="company">Бранч-бар JAM!</span><span class="year">2024</span></div>
+                    <div class="exp-row"><span class="role">Администратор</span><span class="company">Ресторан «Малые Карелы»</span><span class="year">2022–2023</span></div>
+                </div>
+                <div style="margin-top: 12px; font-size: 13px; color: #8A7C6B;">Ранее: официант в Roomi (топ-100 WhereToEat), бармен, бариста</div>
+            </div>
+
+            <!-- ===== ЦИТАТА (между опытом и кейсами) ===== -->
+            <div class="quote-block">
+                «Её куда не кинь — она со всем разберётся».
+                <span class="author">— Управляющая, нынешнее место работы</span>
+            </div>
+
+            <!-- ===== КАРУСЕЛЬ КЕЙСОВ ===== -->
+            <div class="carousel-wrapper">
+                <div class="carousel-header">
+                    <h3>Истории · кейсы</h3>
+                    <span>листай →</span>
+                </div>
+
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="carouselTrack">
+
+                        <!-- Слайд 1 -->
+                        <div class="carousel-slide">
+                            <h4>📘 Рождение обучения с нуля</h4>
+                            <p>«В авторском ресторане нас, первых 8 официантов, обучили через дегустации и рассказы. А дальше — тишина. Штат сократился до 4. Я превратила все знания в документ, чтобы обучать новичков, хотя не была старшей. С каждым изменением меню дополняла описания и презентации».</p>
+                        </div>
+
+                        <!-- Слайд 2 -->
+                        <div class="carousel-slide">
+                            <h4>🧠 Тетрадки и гугл-таблицы вместо бюджета</h4>
+                            <p>«Когда не было ресурсов на полноценное обучение, я делала тренинги, рабочие тетрадки для нулевых официантов. Отбординг — через гугл-таблицы и креатив. Раньше все платили за сервисы, а я сделала инструмент своими руками».</p>
+                        </div>
+
+                        <!-- Слайд 3 -->
+                        <div class="carousel-slide">
+                            <h4>⚡ От недель к часам</h4>
+                            <p>«В компании создание вкусовых карточек занимало кучу времени. Мы ждали материалы из УК неделями и месяцами. Я начала делать тесты, обучения, чек-листы через HTML-код. Путь от "нужно ввести правило" до "правило есть в ПО" сократился с недель до часов. Теперь вся компания делает так — я научила».</p>
+                        </div>
+
+                        <!-- Слайд 4: Рекольтант -->
+                        <div class="carousel-slide">
+                            <h4>🍷 Рекольтант: порядок в цифрах и номенклатуре</h4>
+                            <p>«Кассовая дисциплина, чек-листы, порядок в номенклатуре в iiko, ежемесячные инвентаризации, передача компетенции. Контроль через P&L, ABC-анализ и точечные OLAP-отчёты. Введение акций для роста товарооборота, расширение меню бара и кухни — от идеи до ТТК с просчитанным бар-костом».</p>
+                        </div>
+
+                        <!-- Слайд 5: Малые Карелы -->
+                        <div class="carousel-slide">
+                            <h4>📄 Малые Карелы: банкеты без Excel-ада</h4>
+                            <p>«Заказ у гостя принимался около часа: администраторы долго формировали документ со всеми позициями в Excel и повторно вносили их в iiko для предоплаты. Я изучила механику, перевела всё на внесение позиций в iiko, согласовала с IT-отделом добавление нужных согласий и прописала гайд для администраторов. Время сократилось до 5–10 минут».</p>
+                        </div>
+
+                        <!-- Слайд 6: ЛВК -->
+                        <div class="carousel-slide">
+                            <h4>🎓 ЛВК: интерактивное обучение за 0 рублей</h4>
+                            <p>«К моему приходу система обучения была папкой стандартов на 100 страниц. Компания не была готова вводить LLM-платформы — нужно было бесплатное, но интерактивное решение. Я завела закрытую группу ВК: записывала короткие видео простым языком про сервис, работу с гостями, продажи, нарезала клипы, добавляла опросы, печатные тесты и кейсы. Спустя время считаю это самым правильным решением — большой шаг для компании с нулевым бюджетом».</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-buttons">
+                    <button class="carousel-btn" id="prevBtn">←</button>
+                    <button class="carousel-btn" id="nextBtn">→</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const track = document.getElementById('carouselTrack');
+        const slides = Array.from(track.children);
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => updateCarousel(currentIndex + 1));
+        prevBtn.addEventListener('click', () => updateCarousel(currentIndex - 1));
+
+        // Свайп для мобильных
+        let touchStartX = 0;
+        let touchEndX = 0;
+        track.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+        track.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 40) {
+                if (diff > 0) updateCarousel(currentIndex + 1);
+                else updateCarousel(currentIndex - 1);
+            }
+        });
+
+        // Клавиши
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
+            if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
+        });
+    })();
+</script>
+
+</body>
+</html>
